@@ -8,7 +8,7 @@ function Header() {
       <Navbar bg="dark" variant="dark " expand="lg" collapseOnSelect>
 
         <Container>
-          <LinkContainer to='/'>
+          <LinkContainer to='/home'>
             <Navbar.Brand href="#home">ATIShop</Navbar.Brand>
           </LinkContainer>
           
