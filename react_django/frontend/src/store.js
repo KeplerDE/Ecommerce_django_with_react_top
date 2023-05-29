@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { productListReducer } from './reducers/productReducers.js'
 
 const reducer = combineReducers({
-    produstList: productListReducer,
+    productList: productListReducer,
 
 })
 
