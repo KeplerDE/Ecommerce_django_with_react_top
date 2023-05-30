@@ -12,7 +12,7 @@ function ProductScreen() {
 
    const match = useParams()
    const dispatch = useDispatch()
-   const history = useNavigate();
+   const navigate = useNavigate();
 
    const productDetails = useSelector(state => state.productDetails)
        const { loading, error, product } = productDetails
@@ -22,7 +22,7 @@ function ProductScreen() {
    }, [dispatch, match]);
 
    const addToCartHandler = () => {
-       history(`/cart/${match.id}?qty=${qty}`)
+       navigate(`/cart/${match.id}?qty=${qty}`)
    }
 
 
