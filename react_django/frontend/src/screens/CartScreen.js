@@ -15,7 +15,7 @@ function CartScreen() {
 
 
     const cart = useSelector(state => state.cart)
-    const { cartItems } = cart   // откуда сюда прилетает деструтуризацуия и внизу применение встр.ф. map()
+    const { cartItems } = cart
 
     useEffect(() => {
         if (productId) {
