@@ -27,7 +27,7 @@ function HomeScreen(){
 
 
         },[dispatch])
-//     const products = []        // короче из базы данных в редакс прилетают товары, но тут шляпа не отображается
+
 return (
   <div>
     <h1>Latest Products</h1>
