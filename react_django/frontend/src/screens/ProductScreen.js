@@ -12,7 +12,7 @@ function ProductScreen() {
 
    const match = useParams()
    const dispatch = useDispatch()
-   const navigate = useNavigate();
+   const navigate = useNavigate()
 
    const productDetails = useSelector(state => state.productDetails)
        const { loading, error, product } = productDetails

@@ -85,7 +85,6 @@ def getOrders(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getOrderById(request, pk):
-
     user = request.user
 
     try:
