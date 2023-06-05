@@ -7,15 +7,7 @@ import Message from '../components/Message'
 import Product from '../components/Product'
 import { listProducts } from '../actions/productActions'
 
-// function HomeScreen() {
-//     const dispatch = useDispatch()
-//
-//
-//     useEffect(() => {
-//         dispatch(listProducts())
-//
-//
-//     }, []);
+
 function HomeScreen(){
         const dispatch = useDispatch()
         const productList = useSelector(state => state.productList)

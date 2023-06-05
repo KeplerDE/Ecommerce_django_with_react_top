@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import {Link, Navigate, useNavigate} from 'react-router-dom'
 import { Form, Button, Row, Col, Table } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,8 +9,7 @@ import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 import { listMyOrders } from '../actions/orderActions'
 
-
-function ProfileScreen({ history }) {
+function ProfileScreen() {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -19,7 +18,7 @@ function ProfileScreen({ history }) {
     const [message, setMessage] = useState('')
 
     const dispatch = useDispatch()
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const userDetails = useSelector(state => state.userDetails)
     const { error, loading, user } = userDetails
@@ -33,14 +32,15 @@ function ProfileScreen({ history }) {
     const orderListMy = useSelector(state => state.orderListMy)
     const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
 
+
     useEffect(() => {
         if (!userInfo) {
             navigate('/login')
         } else {
             if (!user || !user.name || success || userInfo._id !== user._id) {
+                dispatch({ type: USER_UPDATE_PROFILE_RESET })
                 dispatch(getUserDetails('profile'))
                 dispatch(listMyOrders())
-
             } else {
                 setName(user.name)
                 setEmail(user.email)
@@ -48,12 +48,10 @@ function ProfileScreen({ history }) {
         }
     }, [dispatch, navigate, userInfo, user, success])
 
-
-
     const submitHandler = (e) => {
         e.preventDefault()
 
-        if (password !== confirmPassword) {
+        if (password != confirmPassword) {
             setMessage('Passwords do not match')
         } else {
             dispatch(updateUserProfile({
@@ -64,8 +62,9 @@ function ProfileScreen({ history }) {
             }))
             setMessage('')
         }
+
     }
-   return (
+    return (
         <Row>
             <Col md={3}>
                 <h2>User Profile</h2>
