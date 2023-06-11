@@ -7,10 +7,13 @@ import Message from '../components/Message'
 import Paginate from '../components/Paginate'
 import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 function ProductListScreen() {
 
     const dispatch = useDispatch()
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const productList = useSelector(state => state.productList)
     const { loading, error, products, pages, page } = productList
@@ -25,21 +28,21 @@ function ProductListScreen() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-    let keyword = .location.search
+    let keyword = location.search
     useEffect(() => {
         dispatch({ type: PRODUCT_CREATE_RESET })
 
         if (!userInfo.isAdmin) {
-            push('/login')
+            navigate('/login')
         }
 
         if (successCreate) {
-            push(`/admin/product/${createdProduct._id}/edit`)
+            navigate(`/admin/product/${createdProduct._id}/edit`)
         } else {
             dispatch(listProducts(keyword))
         }
 
-    }, [dispatch,  userInfo, successDelete, successCreate, createdProduct, keyword])
+    }, [dispatch, navigate, userInfo, successDelete, successCreate, createdProduct, keyword, location])
 
 
     const deleteHandler = (id) => {

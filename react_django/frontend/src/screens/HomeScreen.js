@@ -6,19 +6,22 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Product from '../components/Product'
 import { listProducts } from '../actions/productActions'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 
 function HomeScreen(){
         const dispatch = useDispatch()
+        const location = useLocation()
         const productList = useSelector(state => state.productList)
         const { error, loading, products } = productList
 
-
+    let keyword = location.search
+    console.log(keyword)
     useEffect(() => {
-        dispatch(listProducts())
+        dispatch(listProducts(keyword))
 
 
-        },[dispatch])
+        },[dispatch, keyword, location])
 
 return (
   <div>

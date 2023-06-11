@@ -5,11 +5,11 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-
-from base.models import Product, User, Review
-from base.serializer import ProductSerializer, UserSerializer, UserSerializerWithToken
+from base.models import Product, Review
+from base.serializer import ProductSerializer
 
 from rest_framework import status
+
 
 @api_view(['GET'])
 def getProducts(request):
