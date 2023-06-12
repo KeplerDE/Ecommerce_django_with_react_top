@@ -6,16 +6,17 @@ function SearchBox() {
     const [keyword, setKeyword] = useState('')
 
     const navigate = useNavigate()
-    const location = useLocation();
+    const location = useLocation()
 
     const submitHandler = (e) => {
         e.preventDefault()
         if (keyword) {
-            navigate(`/?keyword=${keyword}&page=1`)
-            // navigate({
-            //     pathname: '/',
-            //     search: `?keyword=${keyword}&page=1`,
-            // });
+            // navigate(`/?keyword=${keyword}&page=1`)
+            navigate({
+                pathname: '/',
+                search: `?keyword=${keyword}&page=1`,
+            });
+
         } else {
             navigate(location.pathname)
         }

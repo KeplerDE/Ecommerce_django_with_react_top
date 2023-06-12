@@ -17,7 +17,7 @@ function ProductListScreen() {
 
     const productList = useSelector(state => state.productList)
     const { loading, error, products, pages, page } = productList
-
+    console.log(pages, page)
     const productDelete = useSelector(state => state.productDelete)
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete
 
@@ -29,6 +29,7 @@ function ProductListScreen() {
     const { userInfo } = userLogin
 
     let keyword = location.search
+    console.log(keyword)
     useEffect(() => {
         dispatch({ type: PRODUCT_CREATE_RESET })
 
